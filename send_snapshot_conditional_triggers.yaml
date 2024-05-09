@@ -4,9 +4,9 @@ blueprint:
     or if a binary sensor's state turns 'off' to 'on', and sends a notification to
     your phone with the picture. Clicking the navigation will navigate to dashboard
     URL. [More Info](https://community.home-assistant.io/t/camera-send-save-snapshot-to-mobile-device-when-motion-is-detected-with-conditions/604156)
-    (v2.2) [Automation]
+    (v2.2.2) [Automation]
   domain: automation
-  source_url: https://gist.github.com/TheRealFalseReality/471a961df8db47dd6feb9ca32b24b2fa
+  source_url: https://github.com/TheRealFalseReality/HABlueprints/blob/3694bbda442c2ebc32f514ad6f6bd98e8e80715e/send_snapshot_conditional_triggers.yaml
   input:
     trigger_additional:
       name: Trigger(s)
@@ -236,26 +236,27 @@ blueprint:
         create your own as long as it outputs true or false)
 
         '
-      default: 'false'
+      default: false
       selector:
-        select:
-          options:
-          - label: 'Off'
-            value: 'false'
-          - label: 'On'
-            value: 'true'
-          - label: On During the Day
-            value: '{{''true'' if is_state(''sun.sun'', ''above_horizon'') else ''false''
-              }}'
-          - label: On During the Night
-            value: '{{''true'' if is_state(''sun.sun'', ''below_horizon'') else ''false''
-              }}'
-          - label: On Between 6p - 8a
-            value: '{{''false'' if now().hour in [8,9,10,11,12,13,14,15,16,17,18]
-              else ''true''}}'
-          custom_value: true
-          sort: false
-          multiple: false
+        boolean:
+        # select:
+        #   options:
+        #   - label: 'Off'
+        #     value: 'false'
+        #   - label: 'On'
+        #     value: 'true'
+        #   - label: On During the Day
+        #     value: '{{''true'' if is_state(''sun.sun'', ''above_horizon'') else ''false''
+        #       }}'
+        #   - label: On During the Night
+        #     value: '{{''true'' if is_state(''sun.sun'', ''below_horizon'') else ''false''
+        #       }}'
+        #   - label: On Between 6p - 8a
+        #     value: '{{''false'' if now().hour in [8,9,10,11,12,13,14,15,16,17,18]
+        #       else ''true''}}'
+        #   custom_value: true
+        #   sort: false
+        #   multiple: false
     save_archive_file:
       name: Save Archive Files?
       description: Choose to activate saving of old snapshots or not (default = on).
@@ -493,7 +494,7 @@ action:
                 sound:
                   name: !input notification_sound
                   volume: !input notification_volume
-                  critical: '{{ iif(notification_critical, 1, 0) }}'
+                  critical: '{{ notification_critical }}'
               actions:
               - action: '{{ action_type }}'
                 title: '{{ action_title }}'
