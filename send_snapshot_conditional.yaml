@@ -7,7 +7,7 @@ blueprint:
     URL. [More Info](https://community.home-assistant.io/t/camera-send-save-snapshot-to-mobile-device-when-motion-is-detected-with-conditions/604156)
     (v2.2.2) [Automation]
   domain: automation
-  source_url: https://github.com/TheRealFalseReality/HABlueprints/blob/3694bbda442c2ebc32f514ad6f6bd98e8e80715e/send_snapshot_conditional.yaml
+  source_url: https://gist.github.com/TheRealFalseReality/eab315e84f2711783fb7454ac0b42187
   input:
     sensor:
       name: Motion or Binary Sensor
