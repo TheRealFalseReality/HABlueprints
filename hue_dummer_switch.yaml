@@ -1,0 +1,6 @@
+blueprint:
+  name: ZHA - Philips Hue Dimmer Switch - V2
+  description: TODO
+  domain: automation
+  source_url: https://gist.github.com/stefanroelofs/775e2e0a3cdb3d72a9451fb247492d59
+  input:
