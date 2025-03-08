@@ -20,12 +20,12 @@ blueprint:
           domain:
           - binary_sensor
           multiple: false
-    trigger_additional:
-      name: Trigger(s)
-      description: Add Additional Trigger(s)
-      default: []
-      selector:
-        trigger: {}
+    # trigger_additional:
+    #   name: Trigger(s)
+    #   description: Add Additional Trigger(s)
+    #   default: []
+    #   selector:
+    #     trigger: {}
     camera:
       name: Camera
       description: The camera which creates the snapshot
@@ -480,11 +480,11 @@ triggers:
   entity_id: !input sensor
   from: 'off'
   to: 'on'
-- triggers: !input trigger_additional
+# - triggers: !input trigger_additional
 variables:
   sensor: !input sensor
   sensor_name: '{{ states[sensor].name }}'
-  trigger_additional: !input trigger_additional
+  # trigger_additional: !input trigger_additional
   camera: !input camera
   camera_name: '{{ states[camera].name }}'
   notify_device: !input notify_device
