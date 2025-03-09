@@ -4,7 +4,7 @@ blueprint:
     or if a binary sensor's state turns 'off' to 'on', and sends a notification to
     your phone with the picture. Clicking the notification will navigate to dashboard
     URL. [More Info](https://community.home-assistant.io/t/camera-send-save-snapshot-to-mobile-device-when-motion-is-detected-with-conditions/604156)
-    (v2.4) [Automation]
+    (v2.4.1) [Automation]
   author: TheFalseReality
   homeassistant:
     min_version: 2024.10.0
@@ -121,13 +121,15 @@ blueprint:
         tts_volume:
           name: TTS Volume
           description: Set TTS volume to device's current alarm volume or Max volume.
-          default: 'Curent Volume'
+          default: 'Notification Volume'
           selector:
             select:
               options:
-                - label: Curent Volume
+                - label: Notification Volume
+                  value: notification_stream
+                - label: Alarm Volume/Sound
                   value: alarm_stream
-                - label: Max Volume
+                - label: Max Alarm Volume/Sound
                   value: alarm_stream_max
         notification_sticky:
           name: Sticky - Android Only
