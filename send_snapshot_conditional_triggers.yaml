@@ -82,7 +82,7 @@ blueprint:
             Use `Alarm` to use the device's loud alarm notification sound.
             [Learn More](https://companion.home-assistant.io/docs/notifications/notification-commands/#volume-level)
             (default = Camera Name == {{ camera_name }} Snapshot). 
-          default: 'Camera Name'
+          default: '{{ camera_name }} Snapshot'
           selector:
             select:
               options:
@@ -121,7 +121,7 @@ blueprint:
         tts_volume:
           name: TTS Volume
           description: Set TTS volume to device's current alarm volume or Max volume.
-          default: 'Notification Volume'
+          default: alarm_stream
           selector:
             select:
               options:
