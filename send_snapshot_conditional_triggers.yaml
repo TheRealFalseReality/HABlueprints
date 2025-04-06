@@ -344,7 +344,7 @@ blueprint:
             boolean: {}
         delay_send:
           name: Send Snapshot Delay
-          description: Wait before sending a notification, in seconds.
+          description: Wait before sending a notification.
           default: 0
           selector:
             duration:
