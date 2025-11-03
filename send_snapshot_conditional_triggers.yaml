@@ -591,8 +591,13 @@ action:
                 ttl: 0
                 priority: high
                 attachment:
-                  url: '{{ snapshot_access_file_path }}'
-                  content_type: JPEG
+                  {% set timestamp = as_timestamp(now()) %} {% set android_data = {"image":
+                  snapshot_access_file_path ~ "?" ~ timestamp} %} {% set ios_data = {
+                    "attachment": {
+                      "url": snapshot_access_file_path ~ "?" ~ timestamp,
+                      "content_type": "JPEG"
+                    }
+                  } %} {{ ios_data if is_ios else android_data }}
                 url: !input data_clickaction_url
                 push:
                   sound:
@@ -621,8 +626,13 @@ action:
                 ttl: 0
                 priority: high
                 attachment:
-                  url: '{{ snapshot_access_file_path }}'
-                  content_type: JPEG
+                  {% set timestamp = as_timestamp(now()) %} {% set android_data = {"image":
+                  snapshot_access_file_path ~ "?" ~ timestamp} %} {% set ios_data = {
+                    "attachment": {
+                      "url": snapshot_access_file_path ~ "?" ~ timestamp,
+                      "content_type": "JPEG"
+                    }
+                  } %} {{ ios_data if is_ios else android_data }}
                 url: !input data_clickaction_url
                 push:
                   sound:
